@@ -12,6 +12,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PostsModule } from './posts/posts.module';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         AppRoutingModule,
         CoreModule,
         SharedModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        PostsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
