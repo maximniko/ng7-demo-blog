@@ -1,5 +1,9 @@
 .mat-toolbar {
   display: flex;
+  span:focus {
+    outline: none;
+    border: none;
+  }
   .mat-toolbar-row {
     justify-content: space-between;
   }

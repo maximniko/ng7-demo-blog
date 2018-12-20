@@ -12,7 +12,13 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { PostsModule } from './posts/posts.module';
+import {PostsModule} from './posts/posts.module';
+import {RouterModule, Routes} from '@angular/router';
+
+const routes: Routes = [
+    {path: '', redirectTo: '/blog', pathMatch: 'full'},
+    {path: '', loadChildren: './posts/posts.module#PostsModule'}
+];
 
 @NgModule({
     declarations: [
@@ -20,14 +26,15 @@ import { PostsModule } from './posts/posts.module';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         AngularFireAuthModule,
         AppRoutingModule,
         CoreModule,
         SharedModule,
-        BrowserAnimationsModule,
-        PostsModule
+        PostsModule,
+        RouterModule.forRoot(routes)
     ],
     providers: [],
     bootstrap: [AppComponent]
