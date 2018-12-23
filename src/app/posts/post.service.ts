@@ -7,10 +7,16 @@ import {map} from 'rxjs/operators';
     providedIn: 'root'
 })
 export class PostService {
-    postCollection: AngularFirestoreCollection<Post>;
+    private postCollection: AngularFirestoreCollection<Post>;
+    private postDoc: AngularFirestoreDocument<Post>;
 
     constructor(private db: AngularFirestore) {
         this.postCollection = this.db.collection('posts');
+    }
+
+    getPostData(id: string) {
+        this.postDoc = this.getPost(id);
+        return this.postDoc.valueChanges();
     }
 
     getPosts() {
@@ -21,5 +27,9 @@ export class PostService {
                 return {id, ...data};
             }))
         );
+    }
+
+    private getPost(id: string) {
+        return this.db.doc<Post>(`posts/${id}`);
     }
 }
